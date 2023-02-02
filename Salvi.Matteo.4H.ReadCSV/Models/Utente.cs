@@ -10,6 +10,7 @@ namespace Salvi.Matteo._4H.ReadCSV.Models
     {
             public string Nome { get; set; }
             public string Cognome { get; set; }
+            public string Email { get; set; }
         
     }
 }

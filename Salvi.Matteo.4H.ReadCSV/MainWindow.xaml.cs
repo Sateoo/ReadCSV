@@ -25,35 +25,43 @@ namespace Salvi.Matteo._4H.ReadCSV
     {
         public MainWindow()
         {
-            InitializeComponent();
-            //Salvi.Matteo._4H.ReadCSV.Models.Utente u = new Utente { Nome = "Matteo", Cognome = "Salvi" } ;
+            InitializeComponent();  
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            int i = 0;
             List<Utente> valori = new List<Utente>();
-            try
+            /*try
             {
                 StreamReader fin = new StreamReader("utenti.csv");
                 while(!fin.EndOfStream)
                 {
                     string str = fin.ReadLine();
-                    string[] colonne = str.Split(";");
-                    Utente u = new Utente { Nome = colonne[0], Cognome = colonne[1] };
-                    valori.Add(u);
+                    if (i != 0)
+                    {
+                        string[] colonne = str.Split(";");
+                        Utente u = new Utente { Nome = colonne[0], Cognome = colonne[1], Email = colonne[2] };
+                        valori.Add(u);
+                    }
+                    i++;
 
                 } 
             }
             catch (Exception errore)
             {
                 MessageBox.Show(errore.Message);
-            }
-
-            for(int x=0;x<3;x++) 
+            }*/
+            for (StreamReader fin = new StreamReader("utenti.csv"); !fin.EndOfStream ;)
             {
-                Utente u = new Utente { Nome = "Matteo", Cognome = "Salvi" } ;
-                valori.Add(u) ;
+                string str = fin.ReadLine();
+                if (i != 0)
+                {
+                    string[] colonne = str.Split(";");
+                    Utente u = new Utente { Nome = colonne[0], Cognome = colonne[1], Email = colonne[2] };
+                    valori.Add(u);
+                }
+                i++;
             }
             dgDati.ItemsSource= valori ;
 
