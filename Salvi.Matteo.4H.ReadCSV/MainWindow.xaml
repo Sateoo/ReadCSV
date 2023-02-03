@@ -10,14 +10,17 @@
         Width="800" 
         WindowStartupLocation="CenterScreen">
     <Grid>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="5*"></RowDefinition>
         </Grid.RowDefinitions>
+        
         <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button Width="150" Margin="5" Content="Apri" Click="Button_Click"></Button>
+            <Button Width="150" Margin="5" Content="Apri" Click="PulsanteApri"></Button>
         </StackPanel>
-        <DataGrid x:Name="dgDati" Grid.Row="1"></DataGrid>
+        
+        <DataGrid x:Name="dgDati" Grid.Row="1" LoadingRow="dgDati_LoadingRow"></DataGrid>
         
     </Grid>
 </Window>

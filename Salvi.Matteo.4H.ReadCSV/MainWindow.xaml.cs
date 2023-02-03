@@ -28,11 +28,11 @@ namespace Salvi.Matteo._4H.ReadCSV
             InitializeComponent();  
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void PulsanteApri(object sender, RoutedEventArgs e)
         {
             int i = 0;
             List<Utente> valori = new List<Utente>();
-            /*try
+            try
             {
                 StreamReader fin = new StreamReader("utenti.csv");
                 while(!fin.EndOfStream)
@@ -46,13 +46,14 @@ namespace Salvi.Matteo._4H.ReadCSV
                     }
                     i++;
 
-                } 
+                }
+                fin.Close();
             }
             catch (Exception errore)
             {
                 MessageBox.Show(errore.Message);
-            }*/
-            for (StreamReader fin = new StreamReader("utenti.csv"); !fin.EndOfStream ;)
+            }
+            /*for (StreamReader fin = new StreamReader("utenti.csv"); !fin.EndOfStream ;)
             {
                 string str = fin.ReadLine();
                 if (i != 0)
@@ -62,9 +63,28 @@ namespace Salvi.Matteo._4H.ReadCSV
                     valori.Add(u);
                 }
                 i++;
-            }
+            }*/
             dgDati.ItemsSource= valori ;
 
+        }
+        private void dgDati_LoadingRow(object sender, DataGridRowEventArgs e)
+        {
+            try
+            {
+                if (e != null && e.Row != null)
+                {
+                    Utente u = e.Row.Item as Utente;
+                    if (u != null)
+                    {
+                        ;
+                        //MessageBox.Show(u.Cognome);
+                    }
+                }
+            }
+            catch 
+            {
+            
+            }
         }
     }
 }
