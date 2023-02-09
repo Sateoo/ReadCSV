@@ -1,2 +1,6 @@
-﻿Nome;Cognome;Email
-Matteo;Salvi;matteo.salvi@studenti.ittsrimini.edu.it
+﻿Nome;Cognome;Email;Tipo
+Matteo;Salvi;matteo.salvi@studenti.ittsrimini.edu.it;Studente
+Maurizio;Conti;maurizio.conti@ittsrimini.edu.it;Professore
+Matteo;Sartini;matteo.sartini@ittsrimini.edu.it;Professore
+PaoloFrancesco;Pompa;paolofrancesco.pompa@studenti.ittsrimini.edu.it;Studente
+Alessandro;Capanna;alessandro.capanna@studenti.ittsrimini.edu.it;Studente

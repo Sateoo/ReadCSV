@@ -30,22 +30,15 @@ namespace Salvi.Matteo._4H.ReadCSV
 
         private void PulsanteApri(object sender, RoutedEventArgs e)
         {
-            int i = 0;
+            string str="";
             List<Utente> valori = new List<Utente>();
             try
             {
                 StreamReader fin = new StreamReader("utenti.csv");
+                fin.ReadLine();
                 while(!fin.EndOfStream)
                 {
-                    string str = fin.ReadLine();
-                    if (i != 0)
-                    {
-                        string[] colonne = str.Split(";");
-                        Utente u = new Utente { Nome = colonne[0], Cognome = colonne[1], Email = colonne[2] };
-                        valori.Add(u);
-                    }
-                    i++;
-
+                    valori.Add(new Utente(str,fin));
                 }
                 fin.Close();
             }
@@ -53,17 +46,6 @@ namespace Salvi.Matteo._4H.ReadCSV
             {
                 MessageBox.Show(errore.Message);
             }
-            /*for (StreamReader fin = new StreamReader("utenti.csv"); !fin.EndOfStream ;)
-            {
-                string str = fin.ReadLine();
-                if (i != 0)
-                {
-                    string[] colonne = str.Split(";");
-                    Utente u = new Utente { Nome = colonne[0], Cognome = colonne[1], Email = colonne[2] };
-                    valori.Add(u);
-                }
-                i++;
-            }*/
             dgDati.ItemsSource= valori ;
 
         }
@@ -76,8 +58,16 @@ namespace Salvi.Matteo._4H.ReadCSV
                     Utente u = e.Row.Item as Utente;
                     if (u != null)
                     {
-                        ;
-                        //MessageBox.Show(u.Cognome);
+                        if(u.Tipo=="Studente")
+                        {
+                            e.Row.Background = Brushes.DarkKhaki;
+                            e.Row.Foreground = Brushes.DarkViolet;
+                        }
+                        else if(u.Tipo=="Professore")
+                        {
+                            e.Row.Foreground= Brushes.Yellow;
+                        }
+                        
                     }
                 }
             }
