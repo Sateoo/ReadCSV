@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Salvi.Matteo._4H.ReadCSV.Models
 {
@@ -14,9 +15,12 @@ namespace Salvi.Matteo._4H.ReadCSV.Models
             public string Email { get; set; }
             public string Tipo { get; set; }
 
-        public Utente(string str,StreamReader fin)
+        public Utente()
         {
-            str = fin.ReadLine();
+
+        }
+        public Utente(string str)
+        {
             string[] colonne = str.Split(";");
             Nome = colonne[0];
             Cognome = colonne[1];
@@ -24,5 +28,21 @@ namespace Salvi.Matteo._4H.ReadCSV.Models
             Tipo = colonne[3];
         }
     }
-    
+    public class Utenti : List<Utente>
+    {
+        public Utenti(string filename)
+        {
+            
+                StreamReader fin = new StreamReader(filename);
+                fin.ReadLine();
+                while (!fin.EndOfStream)
+                {
+                    string str = fin.ReadLine();
+                    Add(new Utente(str));
+                }
+                fin.Close();
+            
+            
+        }
+    }
 }

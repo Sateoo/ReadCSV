@@ -30,24 +30,14 @@ namespace Salvi.Matteo._4H.ReadCSV
 
         private void PulsanteApri(object sender, RoutedEventArgs e)
         {
-            string str="";
-            List<Utente> valori = new List<Utente>();
             try
             {
-                StreamReader fin = new StreamReader("utenti.csv");
-                fin.ReadLine();
-                while(!fin.EndOfStream)
-                {
-                    valori.Add(new Utente(str,fin));
-                }
-                fin.Close();
+                dgDati.ItemsSource = new Utenti("utenti.csv");
             }
             catch (Exception errore)
             {
                 MessageBox.Show(errore.Message);
             }
-            dgDati.ItemsSource= valori ;
-
         }
         private void dgDati_LoadingRow(object sender, DataGridRowEventArgs e)
         {
@@ -67,13 +57,12 @@ namespace Salvi.Matteo._4H.ReadCSV
                         {
                             e.Row.Foreground= Brushes.Yellow;
                         }
-                        
                     }
                 }
             }
-            catch 
+            catch (Exception errore)
             {
-            
+                MessageBox.Show(errore.Message);
             }
         }
     }
