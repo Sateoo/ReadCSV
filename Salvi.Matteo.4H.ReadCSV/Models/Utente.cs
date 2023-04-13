@@ -30,6 +30,10 @@ namespace Salvi.Matteo._4H.ReadCSV.Models
     }
     public class Utenti : List<Utente>
     {
+        public Utenti() 
+            :base()
+        {
+        }
         public Utenti(string filename)
         {
             
@@ -41,8 +45,12 @@ namespace Salvi.Matteo._4H.ReadCSV.Models
                     Add(new Utente(str));
                 }
                 fin.Close();
-            
-            
+        }
+        public Utenti(string filename, string tipo)
+            :this(filename)
+        {
+
         }
     }
+    
 }
